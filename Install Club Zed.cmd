@@ -66,8 +66,19 @@ try {
         if((Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash -ne $release.sha256){throw 'Game archive verification failed.'}
         Write-Host 'Installing the game. This can take a few minutes...'
         Add-Type -AssemblyName System.IO.Compression.FileSystem
-        $archive=[IO.Compression.ZipFile]::OpenRead($zip)
-        try {
+        $archives=@($zip)
+        if($release.patch) {
+            if($release.patch.name -notmatch '^[a-zA-Z0-9._-]+\.zip$' -or $release.patch.sha256 -notmatch '^[a-fA-F0-9]{64}$'){throw 'Invalid game update manifest.'}
+            $patchZip=Join-Path $cache $release.patch.name
+            Write-Host 'Downloading the latest game update...'
+            if($LocalAssetDirectory){Copy-Item -LiteralPath (Join-Path $LocalAssetDirectory $release.patch.name) -Destination $patchZip -Force}
+            else {Download-File $release.patch.url $patchZip}
+            if((Get-FileHash -LiteralPath $patchZip -Algorithm SHA256).Hash -ne $release.patch.sha256){throw 'Game update verification failed.'}
+            $archives+=$patchZip; $partFiles+=$patchZip
+        }
+        foreach($archiveFile in $archives) {
+          $archive=[IO.Compression.ZipFile]::OpenRead($archiveFile)
+          try {
             New-Item -ItemType Directory -Path $versionRoot -Force | Out-Null
             $allowed=[IO.Path]::GetFullPath($versionRoot).TrimEnd('\')+'\'
             foreach($entry in $archive.Entries) {
@@ -77,7 +88,8 @@ try {
                 New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($destination)) -Force | Out-Null
                 [IO.Compression.ZipFileExtensions]::ExtractToFile($entry,$destination,$true)
             }
-        } finally {$archive.Dispose()}
+          } finally {$archive.Dispose()}
+        }
         if(-not (Test-Path (Join-Path $game 'ClubZed\Binaries\Win64\ClubZed.exe'))){throw 'The game executable is missing from the download.'}
         Set-Content -LiteralPath $complete -Value $release.sha256
         # These exact files were created in this version's download cache.

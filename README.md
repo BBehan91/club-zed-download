@@ -14,6 +14,10 @@ Windows 10/11, 64-bit. Download: approximately 3 GB. Keep at least 15 GB free wh
 
 Ask the host for the invitation, address, and password. The host must keep the game running. **Play solo** works without Tailscale.
 
+### Controls and night lighting
+
+**F turns your flashlight on or off.** WASD moves, mouse looks, E interacts, Tab selects a character, Enter opens chat, and F1 shows controls. House lights and the rear deck floodlight switch on at dusk. Occupied cars turn their headlights on after dark; NPCs carry flashlights at night.
+
 ### Updates
 
 Run **Install Club Zed** again to install the latest published build. Everyone joining a game should update together. The installer checks downloaded files before installing and keeps your previous version intact.
