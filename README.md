@@ -1,27 +1,15 @@
-# Club Zed
+# Club Zed — Exploration Preview
 
-## [⬇ Install Club Zed for Windows](https://github.com/BBehan91/club-zed-download/releases/latest/download/Install-Club-Zed.cmd)
+## [Download the Windows game](https://github.com/BBehan91/club-zed-download/releases/download/exploration-2026.11.06.1/Club-Zed-Exploration-Windows.zip)
 
-**Download the installer above and double-click it.** It downloads the complete game, installs it in your user account, adds a **Club Zed** desktop shortcut, and opens the launcher. No Unreal Engine, Visual Studio, GitHub account, or source-code checkout is required.
+Download the ZIP (about 1.88 GB), choose **Extract All**, open the extracted **Windows** folder, and double-click **ClubZed.exe**. Keep the extracted files together.
 
-Windows 10/11, 64-bit. Download: approximately 3 GB. Keep at least 15 GB free while installing. This is an unsigned early playtest; Windows or your browser may ask you to confirm the downloaded installer.
+The game opens directly into the current home and woods map. No Unreal Editor, character selection, account, or multiplayer setup is needed.
 
-### Play with friends
+**Controls:** WASD move, mouse look, Shift sprint, Space jump, F flashlight, E interact. Left mouse use/fire, right mouse aim, R reload, G return held tool. Alt+F4 quits.
 
-1. Install [Tailscale](https://tailscale.com/download/windows) and accept the host's private invitation.
-2. Open **Club Zed** from your desktop.
-3. The host selects **Host a game**. Friends enter the host address and session password, then select **Join a friend**.
+Requires 64-bit Windows and a DirectX 12 / Shader Model 6 capable GPU. If prerequisites are requested, use the bundled installer under Engine/Extras/Redist.
 
-Ask the host for the invitation, address, and password. The host must keep the game running. **Play solo** works without Tailscale.
+This is a work-in-progress exploration preview. Some animal rendering and interactions remain unfinished. See the [release notes and checksum](https://github.com/BBehan91/club-zed-download/releases/tag/exploration-2026.11.06.1) for known issues and validation details.
 
-### Controls and night lighting
-
-**F turns your flashlight on or off.** WASD moves, mouse looks, E interacts, Tab selects a character, Enter opens chat, and F1 shows controls. House lights and the rear deck floodlight switch on at dusk. Occupied cars turn their headlights on after dark; NPCs carry flashlights at night.
-
-### Updates
-
-Run **Install Club Zed** again to install the latest published build. Everyone joining a game should update together. The installer checks downloaded files before installing and keeps your previous version intact.
-
-Do not download GitHub's **Source code ZIP** or the individual game parts. The installer handles the game download automatically.
-
-This repository distributes the Windows playtest and installer. Development source is maintained separately.
+Download the named game ZIP above, **not** GitHub's automatically generated Source code archives. Earlier playtests remain under Releases. Development source is maintained separately.
